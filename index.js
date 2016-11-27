@@ -3,7 +3,7 @@ module.exports = function(source) {
 	var jsonObject = typeof source === "string" ? JSON.parse(source) : source;
 	var returningJsonObject = {};
 	for(var key in jsonObject) {
-		if ( !key.match(/^[0-9]+$/) ) {
+		if ( !(!isNaN(parseFloat(key)) && isFinite(key)) ) {
 			returningJsonObject[key] = jsonObject[key];
 		}
 	}
